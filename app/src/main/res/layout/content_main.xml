@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main"
+    tools:context="com.hakber.dietgo.MainActivity"
+    android:background="@android:color/transparent"
+    android:weightSum="1">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:stretchColumns="0"
+        android:id="@+id/tlTable01">
+
+        <TableRow
+
+            android:paddingRight="1dp"
+            android:background="@color/button_material_light">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:text="Öğün"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:text="Tüketilen"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:text="Önerilen"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:autoText="false" />
+        </TableRow>
+        <TableRow
+
+
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="Kahvaltı"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp" />
+        </TableRow>
+        <TableRow
+
+
+            android:paddingRight="1dp"
+            android:background="@color/button_material_light">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="Öğle Yemeği"
+                android:textSize="20dp"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:autoText="false" />
+
+        </TableRow>
+        <TableRow
+
+
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="Akşam Yemeği"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+        </TableRow>
+        <TableRow
+
+
+            android:paddingRight="1dp"
+            android:background="@color/button_material_light">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="Atıştırma"
+                android:textSize="20dp"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:autoText="false" />
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:autoText="false" />
+
+        </TableRow>
+        <TableRow
+
+            android:paddingTop="15dp"
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="20dp"
+                android:background="#cff1c40f"
+                android:text="Kilo: 0 kg >"
+                android:textSize="20dp"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+            <TextView
+                android:padding="20dp"
+                android:id="@+id/gainedCalorie"
+                android:background="#cfe74c3c"
+                android:text="0 kcal aldınız >"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_span="2"
+                android:textColor="@color/abc_primary_text_material_dark" />
+
+
+        </TableRow>
+        <TableRow
+
+            android:paddingTop="15dp"
+        android:paddingRight="1dp">
+        <TextView
+            android:padding="20dp"
+            android:background="#cf5a67b9"
+            android:text="0 km yüründü >"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#FFF" />
+        <TextView
+            android:padding="20dp"
+            android:background="#cf40d47e"
+            android:text="0 kcal verildi >"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_span="2"
+            android:textColor="@color/background_floating_material_light" />
+
+
+    </TableRow>
+    </TableLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DietGo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_food_list">foodList</string>
+    <string name="title_activity_calorie_summary">calorieSummary</string>
+</resources>
