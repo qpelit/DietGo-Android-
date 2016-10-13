@@ -21,7 +21,7 @@ public class calorieSummary extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(calorieSummary.this, foodList.class);
+                Intent i = new Intent(calorieSummary.this, List1.class);
                 startActivity(i);
             }
         });

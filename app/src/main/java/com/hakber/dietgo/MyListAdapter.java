@@ -47,7 +47,7 @@ public class MyListAdapter extends BaseAdapter {
 
         Food country = countryList.get(position);
 
-        textView.setText(country.getCountryName());
+        textView.setText(country.getFoodName());
         return vi;
     }
 

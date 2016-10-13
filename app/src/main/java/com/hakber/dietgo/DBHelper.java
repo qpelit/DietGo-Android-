@@ -11,53 +11,70 @@ package com.hakber.dietgo;
         import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME   = "turkcellDB";
+    private static final String DATABASE_NAME   = "dietGoDB";
     // Contacts table name
-    private static final String TABLE_COUNTRIES = "countries";
+    private static final String TABLE_FOOD = "foodTable";
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE " + TABLE_COUNTRIES + "(id INTEGER PRIMARY KEY,country_name TEXT,country_code TEXT" + ")";
+        String sql = "CREATE TABLE " + TABLE_FOOD + "(id INTEGER PRIMARY KEY,foodName TEXT,calorie REAL,fat REAL,carbo REAL,protein REAL,type TEXT,catagorie INTEGER" + ")";
         Log.d("DBHelper", "SQL : " + sql);
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COUNTRIES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD);
         onCreate(db);
     }
 
-    public void insertCountry(Food country) {
+    public void insertFood(Food food) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("country_name", country.getCountryName());
-        values.put("country_code", country.getCountryCode());
+     values.put("foodName", food.getFoodName());
+     values.put("calorie",food.getCalorie());
+     values.put("fat",food.getFat());
+     values.put("carbo",food.getCarbo());
+     values.put("protein",food.getProtein());
+     values.put("type",food.getType());
+     values.put("catagorie",food.getCatagorie());
 
-        db.insert(TABLE_COUNTRIES, null, values);
+
+
+        db.insert(TABLE_FOOD, null, values);
         db.close();
     }
 
-    public List<Food> getAllCountries() {
-        List<Food> countries = new ArrayList<Food>();
+    public List<Food> getAllFoods(int i) {
+        List<Food> foods = new ArrayList<Food>();
         SQLiteDatabase db = this.getWritableDatabase();
 
         // String sqlQuery = "SELECT  * FROM " + TABLE_COUNTRIES;
         // Cursor cursor = db.rawQuery(sqlQuery, null);
 
-        Cursor cursor = db.query(TABLE_COUNTRIES, new String[]{"id", "country_name", "country_code"}, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_FOOD, new String[]{"id", "foodName", "calorie","fat","carbo","protein","type","catagorie"}, null, null, null, null, null);
+
         while (cursor.moveToNext()) {
-            Food country = new Food();
-            country.setId(cursor.getInt(0));
-            country.setCountryName(cursor.getString(1));
-            country.setCountryCode(cursor.getString(2));
-            countries.add(country);
+            Food food = new Food();
+            food.setId(cursor.getInt(0));
+            food.setFoodName(cursor.getString(1));
+            food.setCalorie(cursor.getFloat(2));
+            food.setFat(cursor.getFloat(3));
+            food.setCarbo(cursor.getFloat(4));
+            food.setProtein(cursor.getFloat(5));
+            food.setType(cursor.getString(6));
+            food.setCatagorie(cursor.getInt(7));
+
+    if(food.getCatagorie()==i) {
+        foods.add(food);
+    }
         }
 
-        return countries;
+        return foods;
     }
 }

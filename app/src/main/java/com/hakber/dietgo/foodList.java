@@ -20,12 +20,12 @@ public class foodList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         final ListView customListView = (ListView) findViewById(R.id.listview);
         DBHelper dbHelper = new DBHelper(getApplicationContext());
-
+        final String index=getIntent().getExtras().getString("index");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        List<Food> countries = dbHelper.getAllCountries();
-        MyListAdapter myListAdapter = new MyListAdapter(foodList.this, countries);
+        List<Food> foods = dbHelper.getAllFoods(Integer.parseInt(index));
+        MyListAdapter myListAdapter = new MyListAdapter(foodList.this, foods);
         customListView.setAdapter(myListAdapter);
     }
 

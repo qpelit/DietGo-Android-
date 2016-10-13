@@ -58,19 +58,25 @@ public class MainActivity extends AppCompatActivity
 
         final ListView customListView = (ListView) findViewById(R.id.listview);
         DBHelper dbHelper = new DBHelper(getApplicationContext());
-        SharedPreferences settings = getSharedPreferences("SQL", 0);
+        SharedPreferences settings = getSharedPreferences("SQLFQw", 0);
         boolean firstTime = settings.getBoolean("firstTime", true);
 
         if (firstTime) {
-            dbHelper.insertCountry(new Food("Turkiye", "90"));
-            dbHelper.insertCountry(new Food("Amerika", "1"));
-            dbHelper.insertCountry(new Food("Ingiltere", "44"));
-            dbHelper.insertCountry(new Food("Almanya", "49"));
+            dbHelper.insertFood(new Food("Kırmızı Biber",2.3f,2.4f,5.2f,6.2f,"sda", 21));
+            dbHelper.insertFood(new Food("Limon",2.3f,2.4f,5.2f,6.2f,"sda", 00));
+            dbHelper.insertFood(new Food("Karpuz",2.3f,2.4f,5.2f,6.2f,"sda", 01));
+            dbHelper.insertFood(new Food("Tuz",2.3f,2.4f,5.2f,6.2f,"sda", 10));
+            dbHelper.insertFood(new Food("Tahrana",2.3f,2.4f,5.2f,6.2f,"sda", 10));
+
+            dbHelper.insertFood(new Food("Kavun",2.3f,2.4f,5.2f,6.2f,"sda", 21));
+
+
 
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean("firstTime", false);
             editor.commit();
         }
+
 /*
         List<Food> countries = dbHelper.getAllCountries();
         MyListAdapter myListAdapter = new MyListAdapter(MainActivity.this, countries);

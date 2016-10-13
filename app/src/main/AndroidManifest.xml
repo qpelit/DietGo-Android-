@@ -21,7 +21,7 @@
         <activity
             android:name=".foodList"
             android:label="@string/title_activity_food_list"
-            android:parentActivityName=".calorieSummary"
+            android:parentActivityName=".List1"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,6 +36,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hakber.dietgo.MainActivity" />
         </activity>
+        <activity android:name=".List1">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.hakber.dietgo.calorieSummary" /></activity>
+        <activity
+            android:name=".List2"
+            android:label="@string/title_activity_list2"
+            android:theme="@style/AppTheme">  <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.hakber.dietgo.List1" /></activity>
     </application>
 
 </manifest>
