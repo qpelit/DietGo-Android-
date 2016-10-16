@@ -11,58 +11,64 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hakber.dietgo.calorieSummary"
     tools:showIn="@layout/activity_calorie_summary">
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="1dp"
-        android:stretchColumns="0"
-        android:id="@+id/tlTable01">
+        android:stretchColumns="0,1">
 
         <TableRow
-            android:background="#135f5e5e"
-            android:paddingBottom="1dp"
-            android:paddingRight="1dp">
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#135f5e5e">
+
             <TextView
-                android:layout_marginLeft="1dp"
-                android:padding="5dp"
+                android:id="@+id/textView1"
+                android:layout_column="0"
+
                 android:text="Top. Tüketilen"
-                android:textStyle="bold"
-                android:layout_span="1"
-                android:textAlignment="center" />
-            <TextView
-                android:layout_marginLeft="1dp"
-                android:padding="5dp"
-                android:text="Önerilen"
-                android:textStyle="bold"
-                android:layout_span="1"
-                android:textAlignment="center" />
-        </TableRow>
-
-        <TableRow android:paddingBottom="5dp"
-            android:background="@color/dim_foreground_material_dark">
-            <TextView
-                android:padding="20dp"
-                android:text="0 kcal"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="#FFF"
-                android:layout_span="1"
-                android:textAlignment="center"
-                android:layout_marginLeft="1dp" />
-            <TextView
-                android:padding="20dp"
-                android:text="       0 kcal         "
-                android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="20dp"
-                android:layout_span="1"
-                android:textColor="@color/background_floating_material_light"
-                android:textAlignment="center"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:layout_marginLeft="1dp" />
+                android:padding="5dp">
+            </TextView>
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_column="1"
+                android:text="Önerilen"
+                android:gravity="center"
+                android:padding="5dp">
+            </TextView>
 
         </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dim_foreground_material_dark">
+
+            <TextView
+                android:id="@+id/totalCalorie"
+                android:layout_column="0"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:padding="20dp"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/suggestedCalorie"
+                android:layout_column="1"
+                android:text="0 kcal"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:padding="20dp"
+                android:textStyle="bold">
+            </TextView>
+
+        </TableRow>
+
     </TableLayout>
 </RelativeLayout>
