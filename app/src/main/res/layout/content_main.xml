@@ -22,7 +22,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Selected Date"
         android:id="@+id/selectedDate"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp" />
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -170,27 +171,72 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="0,1">
+
         <TableRow
 
             android:paddingTop="15dp"
             android:paddingRight="1dp">
-            <TextView
-                android:layout_marginLeft="1dp"
-                android:padding="20dp"
+
+            <TableLayout
+                android:id="@+id/tableLayouta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#cff1c40f"
-                android:text="Kilo: 0 kg >"
-                android:layout_column="0"
-                android:textColor="#FFF"
-                android:textStyle="bold" />
-            <TextView
-                android:padding="20dp"
-                android:id="@+id/gainedCalorie"
-                android:background="#cfe74c3c"
-                android:text="0 kcal aldınız >"
-                android:layout_column="1"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="@color/abc_primary_text_material_dark" />
+                >
+                <TableRow>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageViewb"
+                        android:src="@mipmap/ic_scale"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="1dp" />
+
+
+                    <TextView
+                        android:layout_marginLeft="1dp"
+                        android:padding="20dp"
+
+                        android:text="Kilo: 0 kg >"
+                        android:layout_column="0"
+                        android:textColor="#FFF"
+                        android:textStyle="bold" />
+
+
+
+                </TableRow>
+
+
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tableLayoutc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#cfe74c3c">
+                <TableRow>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageViewd"
+                        android:src="@mipmap/ic_hamburger"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="1dp" />
+                    <TextView
+                        android:id="@+id/gainedCalorie"
+                        android:text="0 kcal aldınız >"
+                        android:layout_column="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp" />
+
+                </TableRow>
+
+
+            </TableLayout>
 
 
         </TableRow>
@@ -198,24 +244,72 @@
 
             android:paddingTop="15dp"
             android:paddingRight="1dp">
-            <TextView
-                android:padding="20dp"
+
+            <TableLayout
+                android:id="@+id/tableLayoutx2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#cf5a67b9"
-                android:text="0 km yüründü >"
-                android:layout_column="0"
-                android:textStyle="bold"
-                android:textColor="#FFF" />
+                >
+                <TableRow>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView23"
+                        android:src="@mipmap/ic_shoe"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="1dp" />
+
+
+                    <TextView
+                        android:text="0 km yüründü >"
+                        android:layout_column="0"
+                        android:textStyle="bold"
+                        android:textColor="#FFF"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="2dp" />
+
+
+
+                </TableRow>
+
+
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tableLayoutx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#cf40d47e">
+                <TableRow>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView2"
+                        android:src="@mipmap/ic_run"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="1dp" />
             <TextView
-                android:padding="20dp"
-                android:background="#cf40d47e"
+
                 android:text="0 kcal verildi >"
                 android:textStyle="bold"
-                android:layout_column="1"
                 android:gravity="center"
 
-                android:textColor="@color/background_floating_material_light" />
+                android:textColor="@color/background_floating_material_light"
+                android:backgroundTintMode="src_over"
+                android:paddingLeft="2dp"
+                android:paddingTop="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp" />
 
+
+                </TableRow>
+
+
+            </TableLayout>
 
         </TableRow>
     </TableLayout>
+
 </LinearLayout>

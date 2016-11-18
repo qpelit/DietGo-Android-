@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity
     Button btnClosePopup;
     Button btnCreatePopup;
     TextView selectedDate;
+    Calendar myCalendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +34,18 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        myCalendar= Calendar.getInstance();
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        //Oluşturduğumuz değişkeni butonumuzla ilişkilendiriyoruz.
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "." + myCalendar.get(Calendar.MONTH) + "." + myCalendar
+                .get(Calendar.YEAR)));
+
         TextView gainedCalorie = (TextView) findViewById(R.id.gainedCalorie);
 
-        //Butonumuza tıklama özelliği kazandırıyoruz.
         gainedCalorie.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                //Ardından Intent methodunu kullanarak nereden nereye gideceğini söylüyoruz.
+
                 Intent i = new Intent(MainActivity.this, calorieSummary.class);
                 startActivity(i);
             }
@@ -64,13 +67,14 @@ public class MainActivity extends AppCompatActivity
         boolean firstTime = settings.getBoolean("firstTime", true);
 
         if (firstTime) {
-            dbHelper.insertFood(new Food("Kırmızı Biber",2.3f,2.4f,5.2f,6.2f,"sda", 21));
-            dbHelper.insertFood(new Food("Limon",2.3f,2.4f,5.2f,6.2f,"sda", 00));
-            dbHelper.insertFood(new Food("Karpuz",2.3f,2.4f,5.2f,6.2f,"sda", 01));
-            dbHelper.insertFood(new Food("Tuz",2.3f,2.4f,5.2f,6.2f,"sda", 10));
-            dbHelper.insertFood(new Food("Tahrana",2.3f,2.4f,5.2f,6.2f,"sda", 10));
+            // Food(String foodName, float calorie, float fat, float carbo, float protein, String type, int catagorie)
+            dbHelper.insertFood(new Food("Kırmızı Biber",2.3f,2.4f,5.2f,6.2f,"p", 21));
+            dbHelper.insertFood(new Food("Limon",2.3f,2.4f,5.2f,6.2f,"g", 00));
+            dbHelper.insertFood(new Food("Karpuz",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Tuz",2.3f,2.4f,5.2f,6.2f,"p", 10));
+            dbHelper.insertFood(new Food("Tahrana",2.3f,2.4f,5.2f,6.2f,"p", 10));
 
-            dbHelper.insertFood(new Food("Kavun",2.3f,2.4f,5.2f,6.2f,"sda", 21));
+            dbHelper.insertFood(new Food("Kavun",2.3f,2.4f,5.2f,6.2f,"p", 21));
 
 
 
@@ -147,7 +151,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    Calendar myCalendar = Calendar.getInstance();
 
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 

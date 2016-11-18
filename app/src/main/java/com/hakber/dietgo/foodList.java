@@ -2,6 +2,8 @@ package com.hakber.dietgo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,7 +52,7 @@ public class foodList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                initiatePopupWindow(position);
+                initiatePopupWindow(position,view);
 
             }
         });
@@ -58,18 +60,37 @@ public class foodList extends AppCompatActivity {
     }
     private PopupWindow pwindo;
 
-    private void initiatePopupWindow(int pos) {
+    private void initiatePopupWindow(int pos,View anchorView) {
         try {
 // We need to get the instance of the LayoutInflater
             LayoutInflater inflater = (LayoutInflater) foodList.this
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.screen_popup,
                     (ViewGroup) findViewById(R.id.popup_element));
+
+
+
+
             pwindo = new PopupWindow(foodList.this);
             pwindo.setContentView(layout);
             pwindo.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
             pwindo.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+
+            // If the PopupWindow should be focusable
+            pwindo.setFocusable(true);
+
+            // If you need the PopupWindow to dismiss when when touched outside
+            pwindo.setBackgroundDrawable(new BitmapDrawable());
+
+            int location[] = new int[2];
+
+            // Get the View's(the one that was clicked in the Fragment) location
+            anchorView.getLocationOnScreen(location);
+
+            // Using location, the PopupWindow will be displayed right under anchorView
+            pwindo.showAtLocation(anchorView, Gravity.NO_GRAVITY,
+                    location[0], location[1] + anchorView.getHeight());
 
             btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
             btnClosePopup.setOnClickListener(cancel_button_click_listener);

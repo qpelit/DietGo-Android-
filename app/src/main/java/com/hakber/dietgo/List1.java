@@ -24,14 +24,13 @@ public class List1 extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //(A) adımı
+
         ListView listemiz=(ListView) findViewById(R.id.list1View1);
 
-        //(B) adımı
+
         ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, android.R.id.text1, ulkeler);
 
-        //(C) adımı
         listemiz.setAdapter(veriAdaptoru);
 
         listemiz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
