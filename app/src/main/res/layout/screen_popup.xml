@@ -140,26 +140,39 @@
 
     </TableLayout>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Ekle"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
-        android:background="#2ecc71"
-        android:textColor="@color/abc_primary_text_disable_only_material_dark"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        style="@style/AppTheme" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_gravity="center_horizontal" />
+    <!--
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:entries="@array/portionOrGram"
+            android:prompt="@string/pg_prompt"
+            android:spinnerMode="dialog"
+            android:layout_marginTop="20dp" />
+    -->
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"/>
 
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Ekle"
+            android:layout_gravity="center_horizontal"
+            android:background="#2ecc71"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            style="@style/AppTheme" />
+
+
+
+    </LinearLayout>
 
 

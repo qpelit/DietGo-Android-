@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
         myCalendar= Calendar.getInstance();
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "." + myCalendar.get(Calendar.MONTH) + "." + myCalendar
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
                 .get(Calendar.YEAR)));
 
         TextView gainedCalorie = (TextView) findViewById(R.id.gainedCalorie);
@@ -63,14 +63,18 @@ public class MainActivity extends AppCompatActivity
 
         final ListView customListView = (ListView) findViewById(R.id.listview);
         DBHelper dbHelper = new DBHelper(getApplicationContext());
-        SharedPreferences settings = getSharedPreferences("SQLFQw", 0);
+        SharedPreferences settings = getSharedPreferences("SQLFQwxzz", 0);
         boolean firstTime = settings.getBoolean("firstTime", true);
 
         if (firstTime) {
             // Food(String foodName, float calorie, float fat, float carbo, float protein, String type, int catagorie)
             dbHelper.insertFood(new Food("Kırmızı Biber",2.3f,2.4f,5.2f,6.2f,"p", 21));
             dbHelper.insertFood(new Food("Limon",2.3f,2.4f,5.2f,6.2f,"g", 00));
-            dbHelper.insertFood(new Food("Karpuz",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Karpuz1",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Karpuz2",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Karpuz3",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Karpuz4",2.3f,2.4f,5.2f,6.2f,"p", 01));
+            dbHelper.insertFood(new Food("Karpuz5",2.3f,2.4f,5.2f,6.2f,"p", 01));
             dbHelper.insertFood(new Food("Tuz",2.3f,2.4f,5.2f,6.2f,"p", 10));
             dbHelper.insertFood(new Food("Tahrana",2.3f,2.4f,5.2f,6.2f,"p", 10));
 

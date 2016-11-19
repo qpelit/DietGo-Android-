@@ -11,4 +11,12 @@
     <string name="karbonhidrat">Karbonhidrat</string>
     <string name="protein">Protein</string>
     <string name="yag">Yağ</string>
+
+    <string name="pg_prompt">Choose a country</string>
+
+    <string-array name="portionOrGram">
+        <item>Portion</item>
+        <item>Gram</item>
+
+    </string-array>
 </resources>
