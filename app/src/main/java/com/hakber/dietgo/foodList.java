@@ -31,8 +31,9 @@ public class foodList extends AppCompatActivity {
     Button btnCreatePopup;
     private Spinner spinner1, spinner2;;
     private Button btnSubmit;
-
-
+    private String  porsionOrGram;
+    private int foodpos;
+    private int multiply; // porsionxKalorie or gram/100xKalorie
     List<Food> foods;
 
     @Override
@@ -44,7 +45,8 @@ public class foodList extends AppCompatActivity {
         final ListView customListView = (ListView) findViewById(R.id.listview);
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         final String index = getIntent().getExtras().getString("index");
-
+        dbHelper.insertFoodList();
+       dbHelper.getAllFoodMealList();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         foods = dbHelper.getAllFoods(Integer.parseInt(index));
@@ -82,7 +84,7 @@ public class foodList extends AppCompatActivity {
             pwindo.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
             pwindo.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
 
-
+            foodpos=pos;
             // If the PopupWindow should be focusable
             pwindo.setFocusable(true);
 
@@ -115,14 +117,14 @@ public class foodList extends AppCompatActivity {
             ((TextView) pwindo.getContentView().findViewById(R.id.foodFatTextView)).setText(String.valueOf(foods.get(pos).getFat() + " gr"));
 
             //spinners and button initiate
-           // spinner1 = (Spinner) pwindo.getContentView().findViewById(R.id.spinner1);
+           spinner1 = (Spinner) pwindo.getContentView().findViewById(R.id.spinner1);
             btnSubmit = (Button) pwindo.getContentView().findViewById(R.id.btnSubmit);
             spinner2 = (Spinner) pwindo.getContentView().findViewById(R.id.spinner2);
 
-            String porsionOrGram=String.valueOf(foods.get(pos).getType());
+            porsionOrGram=String.valueOf(foods.get(pos).getType());
             if(!isFinishing()) {
                 addItemsOnSpinner2(porsionOrGram);
-                //addListenerOnSpinnerItemSelection();
+                addListenerOnSpinnerItemSelection();
 
                 addListenerOnButton();
 
@@ -144,13 +146,26 @@ public class foodList extends AppCompatActivity {
 
 
     // add items into spinner dynamically
-/*
+
     public void addListenerOnSpinnerItemSelection() {
-        spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        spinner2.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
 
     }
-*/
+
     // get the selected dropdown list value
     public void addListenerOnButton() {
 
@@ -162,19 +177,28 @@ public class foodList extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(foodList.this,
                         "OnClickListener : " +
+                                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) +
                                 "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()),
                         Toast.LENGTH_SHORT).show();
             }
 
         });
     }
-/*
+
    class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             Toast.makeText(parent.getContext(),
                     "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
                     Toast.LENGTH_SHORT).show();
+
+
+
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodCalorieTextView)).setText(String.format("%.2f",foods.get(foodpos).getCalorie()*(pos+1)) + " kcal");
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodKarbonhidratTextView)).setText(String.format("%.2f",foods.get(foodpos).getCarbo()*(pos+1)) + " gr");
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodProteinTextView)).setText(String.format("%.2f",foods.get(foodpos).getProtein()*(pos+1)) + " gr");
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodFatTextView)).setText(String.format("%.2f",foods.get(foodpos).getFat()*(pos+1)) + " gr");
+
         }
 
         @Override
@@ -183,18 +207,18 @@ public class foodList extends AppCompatActivity {
         }
 
     }
-    */
+
     public void addItemsOnSpinner2(String porg) {
 
         List<String> list = new ArrayList<String>();
         if(porg.equals("p")) {
-            for(int i=0;i<=100;i++)
+            for(int i=1;i<=20;i++)
             list.add(String.valueOf(i)+ " porsiyon");
 
         }
         else{
-            for(int i=100;i<=5000;i++)
-                list.add(String.valueOf(i)+ " gram"+porg);
+            for(int i=100;i<=5000;i+=100)
+                list.add(String.valueOf(i)+ " gram");
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);

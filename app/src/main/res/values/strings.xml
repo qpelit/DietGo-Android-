@@ -12,11 +12,13 @@
     <string name="protein">Protein</string>
     <string name="yag">Yağ</string>
 
-    <string name="pg_prompt">Choose a country</string>
+    <string name="meal_prompt">Öğün Seçiniz</string>
 
-    <string-array name="portionOrGram">
-        <item>Portion</item>
-        <item>Gram</item>
+    <string-array name="meals">
+        <item>Kahvaltı</item>
+        <item>Öğle Yemeği</item>
+        <item>Akşam Yemeği</item>
+        <item>Atıştırma</item>
 
     </string-array>
 </resources>

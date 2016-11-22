@@ -14,6 +14,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME   = "dietGoDB";
     // Contacts table name
     private static final String TABLE_FOOD = "foodTable";
+    private static final String TABLE_FOODMEALLIST = "foodListTable1";
+
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -22,13 +24,31 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE_FOOD + "(id INTEGER PRIMARY KEY,foodName TEXT,calorie REAL,fat REAL,carbo REAL,protein REAL,type TEXT,catagorie INTEGER" + ")";
+        String sql1 = "CREATE TABLE " + TABLE_FOODMEALLIST + "(id INTEGER PRIMARY KEY,food_id INT,amount INT,meal INT,dt datetime default current_timestamp,FOREIGN KEY(food_id) REFERENCES foodTable(id)" + ")";
+        String[] statements = new String[]{sql, sql1};
         Log.d("DBHelper", "SQL : " + sql);
-        db.execSQL(sql);
+
+        for (String sqlx : statements){
+            db.execSQL(sqlx);
+        }
+
+
+
+
+
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD);
+        String sql="DROP TABLE IF EXISTS " + TABLE_FOOD;
+        String sql1="DROP TABLE IF EXISTS " + TABLE_FOODMEALLIST;
+        String[] statements = new String[]{sql, sql1};
+
+        for (String sqlx : statements){
+            db.execSQL(sqlx);
+        }
         onCreate(db);
     }
 
@@ -47,6 +67,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         db.insert(TABLE_FOOD, null, values);
+        db.close();
+    }
+    public void insertFoodList() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("food_id",333112221);
+        values.put("amount",100);
+        values.put("meal",2);
+
+
+
+
+        db.insert(TABLE_FOODMEALLIST, null, values);
         db.close();
     }
 
@@ -76,5 +110,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return foods;
+    }
+    public void getAllFoodMealList(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_FOODMEALLIST, new String[]{"id", "food_id", "amount","meal","dt"}, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            System.out.println("Hakan" + cursor.getInt(0));
+        }
     }
 }
