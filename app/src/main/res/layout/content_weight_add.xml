@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hakber.dietgo.weightAdd"
+    tools:showIn="@layout/activity_weight_add">
+    <EditText
+        android:id="@+id/weightText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/weightAddButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weightText"
+        android:text="Ekle"
+        android:layout_gravity="center_horizontal"
+        android:background="#2ecc71"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        style="@style/AppTheme"
+        android:layout_marginTop="11sp" />
+
+    <TextView
+        android:id="@+id/alertText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <requestFocus />
+
+</RelativeLayout>

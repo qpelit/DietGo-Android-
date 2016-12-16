@@ -78,12 +78,14 @@
             <TextView
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
+                android:id="@+id/breakFastCalorie"
                 android:text="0 kcal"
                 android:layout_column="1"
                 android:gravity="center" />
             <TextView
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
+                android:id="@+id/breakFastSuggestedCalorie"
                 android:layout_column="2"
                 android:text="0 kcal"
                 android:gravity="center" />
@@ -104,11 +106,13 @@
                 android:padding="20dp"
                 android:text="0 kcal"
                 android:layout_column="1"
+                android:id="@+id/launchCalorie"
                 android:gravity="center"
                 android:autoText="false" />
             <TextView
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
+                android:id="@+id/launchSuggestedCalorie"
                 android:text="0 kcal"
                 android:layout_column="2"
                 android:gravity="center"
@@ -128,11 +132,13 @@
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
                 android:layout_column="1"
+                android:id="@+id/dinnerCalorie"
                 android:text="0 kcal"
                 android:gravity="center" />
             <TextView
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
+                android:id="@+id/dinnerSuggestedCalorie"
                 android:layout_column="2"
                 android:text="0 kcal"
                 android:gravity="center" />
@@ -152,6 +158,7 @@
             <TextView
                 android:layout_marginLeft="1dp"
                 android:padding="20dp"
+                android:id="@+id/snackCalorie"
                 android:text="0 kcal"
                 android:layout_column="1"
                 android:gravity="center"
@@ -161,6 +168,7 @@
                 android:padding="20dp"
                 android:layout_column="2"
                 android:text="0 kcal"
+                android:id="@+id/snackSuggestedCalorie"
                 android:gravity="center"
                 android:autoText="false" />
 
@@ -196,12 +204,11 @@
                     <TextView
                         android:layout_marginLeft="1dp"
                         android:padding="20dp"
-
+                        android:id="@+id/weightText"
                         android:text="Kilo: 0 kg >"
                         android:layout_column="0"
                         android:textColor="#FFF"
                         android:textStyle="bold" />
-
 
 
                 </TableRow>
@@ -295,7 +302,6 @@
                 android:text="0 kcal verildi >"
                 android:textStyle="bold"
                 android:gravity="center"
-
                 android:textColor="@color/background_floating_material_light"
                 android:backgroundTintMode="src_over"
                 android:paddingLeft="2dp"

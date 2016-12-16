@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE_FOOD + "(id INTEGER PRIMARY KEY,foodName TEXT,calorie REAL,fat REAL,carbo REAL,protein REAL,type TEXT,catagorie INTEGER" + ")";
-        String sql1 = "CREATE TABLE " + TABLE_FOODMEALLIST + "(id INTEGER PRIMARY KEY,food_id INT,amount INT,meal INT,dt datetime default current_timestamp,FOREIGN KEY(food_id) REFERENCES foodTable(id)" + ")";
+        String sql1 = "CREATE TABLE " + TABLE_FOODMEALLIST + "(id INTEGER PRIMARY KEY,food_id INT,amount INT,meal INT,date TEXT,FOREIGN KEY(food_id) REFERENCES foodTable(id)" + ")";
         String[] statements = new String[]{sql, sql1};
         Log.d("DBHelper", "SQL : " + sql);
 
@@ -69,13 +69,14 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_FOOD, null, values);
         db.close();
     }
-    public void insertFoodList() {
+    public void insertFoodList(int food_id,int amount,int meal,String date) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("food_id",333112221);
-        values.put("amount",100);
-        values.put("meal",2);
+        values.put("food_id",food_id);
+        values.put("amount",amount);
+        values.put("meal",meal);
+        values.put("date",date);
 
 
 
@@ -114,9 +115,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public void getAllFoodMealList(){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_FOODMEALLIST, new String[]{"id", "food_id", "amount","meal","dt"}, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_FOODMEALLIST, new String[]{"id", "food_id", "amount","meal","date"}, null, null, null, null, null);
         while (cursor.moveToNext()) {
-            System.out.println("Hakan" + cursor.getInt(0));
+            System.out.println("id" + cursor.getInt(0));
+            System.out.println("id" + cursor.getInt(1));
+            System.out.println("Amount" + cursor.getInt(2));
+            System.out.println("Meal" + cursor.getInt(3));
+            System.out.println("Date" + cursor.getString(4));
+
+
+
         }
     }
 }

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hakber.dietgo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,15 +40,56 @@
                 android:value="com.hakber.dietgo.MainActivity" />
         </activity>
         <activity android:name=".List1">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.hakber.dietgo.calorieSummary" /></activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.calorieSummary" />
+        </activity>
         <activity
             android:name=".List2"
             android:label="@string/title_activity_list2"
-            android:theme="@style/AppTheme">  <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.hakber.dietgo.List1" /></activity>
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.List1" />
+        </activity>
+        <activity
+            android:name=".weight"
+            android:label="@string/title_activity_weight"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".weightAdd"
+            android:label="@string/title_activity_weight_add"
+            android:parentActivityName=".weight"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.weight" />
+        </activity>
+        <activity android:name=".welcomeScreen" />
+        <activity
+            android:name=".register"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".welcomeScreen"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.welcomeScreen" />
+        </activity>
+        <activity android:name=".welcome_screen2" />
+        <activity
+            android:name=".insertFood"
+            android:label="@string/title_activity_insert_food"
+            android:parentActivityName=".List1"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.List1" />
+        </activity>
     </application>
 
 </manifest>

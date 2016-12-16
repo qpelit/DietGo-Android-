@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.hakber.dietgo.insertFood"
+    android:gravity="fill_horizontal|fill_vertical"
+    tools:showIn="@layout/activity_insert_food"
+    android:paddingTop="?attr/actionBarSize"
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/healthy">
+
+        <EditText
+            android:id="@+id/food_name_insert"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Besin Adı"
+            android:background="@android:color/background_dark"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.7"
+            android:layout_marginTop="40dp" />
+
+        <EditText
+            android:id="@+id/calorie_insert"
+            android:hint="Kalorisi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_dark"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.7" />
+        <EditText
+            android:id="@+id/fat_insert"
+            android:hint="Yağ Miktarı"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_dark"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.7" />
+        <EditText
+            android:id="@+id/carbo_insert"
+            android:hint="Karbonhidrat Miktarı"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_dark"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.7" />
+        <EditText
+            android:id="@+id/protein_insert"
+            android:hint="Protein Miktarı"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_dark"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.7" />
+        <Spinner
+            android:id="@+id/spinner_type_insert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:spinnerMode="dropdown"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_vertical"
+            />
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/btn_food_insert"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="#ea4c88"
+            android:text="Ekle"
+            android:textColor="@color/white"
+            android:alpha="0.9" />
+
+        <!-- Link to Login Screen -->
+
+    </LinearLayout>
+</RelativeLayout>

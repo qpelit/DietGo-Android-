@@ -32,8 +32,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Food Name"
         android:id="@+id/foodTextView"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp" />
+        android:layout_gravity="center_horizontal" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,8 +40,7 @@
         android:text="0 kcal"
         android:id="@+id/foodCalorieTextView"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:textStyle="bold" />
 
 
@@ -161,6 +159,16 @@
         android:entries="@array/meals"
         android:prompt="@string/meal_prompt"
         android:spinnerMode="dialog"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Selected Date"
+        android:id="@+id/listDate"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:onClick="showTimePickerDialog" />
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="fill_parent"

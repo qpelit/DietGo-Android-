@@ -11,7 +11,14 @@
     tools:context="com.hakber.dietgo.foodListFragment"
     tools:showIn="@layout/activity_food_list">
 
-
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            />
 
         <ListView
             android:id="@+id/listview"

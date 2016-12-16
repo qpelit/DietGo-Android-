@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:id="@+id/imageView3"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_foodlist"
+        android:adjustViewBounds="false"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yemek Adı"
+        android:paddingLeft="35dp"
+        android:id="@+id/food_nameText"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/abc_action_bar_content_inset_material"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/imageView3"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kalori"
+        android:paddingLeft="35dp"
+
+        android:id="@+id/calorieText"
+        android:layout_below="@+id/food_nameText"
+        android:layout_alignParentLeft="true"
+
+        android:textSize="@dimen/abc_action_bar_content_inset_material" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/mealText"
+
+        android:gravity="right"
+        android:textSize="@dimen/abc_action_bar_content_inset_material" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

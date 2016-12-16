@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.hakber.dietgo.welcomeScreen"
+    android:gravity="fill_horizontal|fill_vertical"
+    android:background="@color/abc_input_method_navigation_guard">
+
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:autoStart="false"
+        android:foregroundTintMode="src_over"
+        android:foreground="@color/bg_register">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:foregroundTintMode="add">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@android:color/black"
+                android:scaleType="centerCrop"
+                android:src="@drawable/runningtwo" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@android:color/darker_gray"
+                android:scaleType="centerCrop"
+                android:src="@drawable/running" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@android:color/holo_green_light"
+                android:scaleType="centerCrop"
+                android:src="@drawable/welcome3" />
+
+        </RelativeLayout>
+    </ViewFlipper>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diet"
+        android:textColor="@color/primary_material_light"
+        android:textSize="72dp"
+        android:textStyle="bold"
+        android:id="@+id/textView5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="bottom" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="72dp"
+        android:textStyle="bold"
+        android:id="@+id/textView4"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp">
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Kullanıcı Adı"
+            android:background="@color/abc_search_url_text_selected"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.6" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/abc_search_url_text_selected"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:hint="Şifre"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.6" />
+
+        <EditText
+            android:id="@+id/birthYear"
+            android:hint="Dogum Yili"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/abc_search_url_text_selected"
+            android:inputType="number"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.6" />
+        <EditText
+            android:id="@+id/height"
+            android:hint="Boy (cm)"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/abc_search_url_text_selected"
+            android:inputType="number"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.6" />
+        <EditText
+            android:id="@+id/weight"
+            android:hint="Kilo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/abc_search_url_text_selected"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/foreground_material_dark"
+            android:textColorHint="@color/hint_foreground_material_dark"
+            android:alpha="0.6" />
+        <Spinner
+            android:id="@+id/spinnerGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:spinnerMode="dropdown"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:layout_gravity="center_vertical"
+            android:theme="@style/AppTheme" />
+        <Spinner
+            android:id="@+id/spinnerInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:layout_marginBottom="10dp"
+            android:spinnerMode="dropdown"
+            android:clickable="false"
+            android:layout_gravity="center_vertical" />
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="#ea4c88"
+            android:text="Kayıt ol"
+            android:textColor="@color/white"
+            android:alpha="0.9" />
+
+        <!-- Link to Login Screen -->
+
+        <Button
+            android:id="@+id/btnLinkToLoginScreen"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@android:color/holo_blue_dark"
+            android:text="ÜYEYİM"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:alpha="0.9" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,10 +1,14 @@
 package com.hakber.dietgo;
 
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +20,30 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class foodList extends AppCompatActivity {
     Button btnClosePopup;
@@ -33,36 +52,33 @@ public class foodList extends AppCompatActivity {
     private Button btnSubmit;
     private String  porsionOrGram;
     private int foodpos;
-    private int multiply; // porsionxKalorie or gram/100xKalorie
-    List<Food> foods;
-
+    public TextView selectedDate;
+    Calendar myCalendar;
+    DBHelper dbHelper;
+    int spinner1position;//0 is for kahvaltı 1 is for öğle yemeği 2 is for akşam 3 is for atıştırma
+    int spinner2position;
+    DBHandler dbHandler;
+    ListView customListView;
+    List<Food> foods = new ArrayList<Food>();
+int user_id;
+   String index;
+    private ProgressBar spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        SharedPreferences preferences= getSharedPreferences("userInfos", 0);
+        user_id = preferences.getInt("user_id", -1);
+        dbHandler=new DBHandler();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final ListView customListView = (ListView) findViewById(R.id.listview);
-        DBHelper dbHelper = new DBHelper(getApplicationContext());
-        final String index = getIntent().getExtras().getString("index");
-        dbHelper.insertFoodList();
-       dbHelper.getAllFoodMealList();
+        customListView = (ListView) findViewById(R.id.listview);
+        //dbHelper = new DBHelper(getApplicationContext());
+        index = getIntent().getExtras().getString("index");
+        getFoods(Integer.parseInt(index)-1); // to get Foods from server
+      // dbHelper.getAllFoodMealList();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        foods = dbHelper.getAllFoods(Integer.parseInt(index));
-        MyListAdapter myListAdapter = new MyListAdapter(foodList.this, foods);
-        customListView.setAdapter(myListAdapter);
-
-
-        customListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                initiatePopupWindow(position, view);
-
-            }
-        });
 
 
 
@@ -101,7 +117,7 @@ public class foodList extends AppCompatActivity {
 
 
             pwindo.showAtLocation(anchorView, Gravity.NO_GRAVITY,
-                    location[0], location[1] + anchorView.getHeight());
+                    location[0], location[1] + 50);
 
             btnClosePopup = (Button) layout.findViewById(R.id.btn_close_popup);
             btnClosePopup.setOnClickListener(cancel_button_click_listener);
@@ -122,6 +138,11 @@ public class foodList extends AppCompatActivity {
             spinner2 = (Spinner) pwindo.getContentView().findViewById(R.id.spinner2);
 
             porsionOrGram=String.valueOf(foods.get(pos).getType());
+
+            myCalendar= Calendar.getInstance();
+            selectedDate= (TextView) pwindo.getContentView().findViewById(R.id.listDate);
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR)));
             if(!isFinishing()) {
                 addItemsOnSpinner2(porsionOrGram);
                 addListenerOnSpinnerItemSelection();
@@ -153,7 +174,7 @@ public class foodList extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
-
+                spinner1position = position;
             }
 
             @Override
@@ -169,36 +190,28 @@ public class foodList extends AppCompatActivity {
     // get the selected dropdown list value
     public void addListenerOnButton() {
 
-      //  spinner1 = (Spinner) pwindo.getContentView().findViewById(R.id.spinner1);
-        //spinner2 = (Spinner) findViewById(R.id.spinner2);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(foodList.this,
-                        "OnClickListener : " +
-                                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) +
-                                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
 
+                DBHandler.insertFoodList(foods.get(foodpos).getId(), foods.get(foodpos).getFoodName(),foods.get(foodpos).getCalorie(),spinner2position, spinner1position, user_id, (String) selectedDate.getText());
+                Intent i = new Intent(foodList.this, calorieSummary.class);
+                startActivity(i);
+            }
         });
+
+
     }
 
    class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            Toast.makeText(parent.getContext(),
-                    "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-                    Toast.LENGTH_SHORT).show();
-
-
-
-            ((TextView) pwindo.getContentView().findViewById(R.id.foodCalorieTextView)).setText(String.format("%.2f",foods.get(foodpos).getCalorie()*(pos+1)) + " kcal");
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodCalorieTextView)).setText(String.format("%.2f", foods.get(foodpos).getCalorie()*(pos+1)) + " kcal");
             ((TextView) pwindo.getContentView().findViewById(R.id.foodKarbonhidratTextView)).setText(String.format("%.2f",foods.get(foodpos).getCarbo()*(pos+1)) + " gr");
             ((TextView) pwindo.getContentView().findViewById(R.id.foodProteinTextView)).setText(String.format("%.2f",foods.get(foodpos).getProtein()*(pos+1)) + " gr");
-            ((TextView) pwindo.getContentView().findViewById(R.id.foodFatTextView)).setText(String.format("%.2f",foods.get(foodpos).getFat()*(pos+1)) + " gr");
-
+            ((TextView) pwindo.getContentView().findViewById(R.id.foodFatTextView)).setText(String.format("%.2f", foods.get(foodpos).getFat()*(pos+1)) + " gr");
+        spinner2position=pos+1;
         }
 
         @Override
@@ -224,5 +237,115 @@ public class foodList extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
+    }
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Toast.makeText(foodList.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR), Toast.LENGTH_LONG).show();
+
+
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR)));
+
+
+        }
+
+    };
+    public void showTimePickerDialog(View v) {
+        new DatePickerDialog(foodList.this, date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    private void getFoods(int cat) {
+        String url=" ";
+        spinner.setVisibility(View.VISIBLE);
+        if(cat!=-1) { // if category is not the user's custom food list
+            url = Config.FOOD_DATA_URL + index;
+        }
+        else{
+            url = Config.FOOD_DATA_URL + String.valueOf(user_id)+"0"; //  category will be user_id+0
+
+        }
+        StringRequest stringRequest = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //loading.dismiss();
+                spinner.setVisibility(View.GONE);
+                showJSON(response);
+            }
+        },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  Toast.makeText(calorieSummary.this,error.getMessage().toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void showJSON(String response){
+
+        JSONArray result;
+        JSONObject collegeData;
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            result = jsonObject.getJSONArray(Config.JSON_ARRAY);
+            if(result!=null){
+            for(int i=0; i < result.length() ; i++) {
+
+                collegeData = (JSONObject) result.get(i);
+
+                Food food = new Food();
+                food.setId(collegeData.getInt("id"));
+                food.setFoodName(collegeData.getString("foodName"));
+                food.setCalorie((float) collegeData.getDouble("calorie"));
+                food.setFat((float) collegeData.getDouble("fat"));
+                food.setCarbo((float) collegeData.getDouble("carbo"));
+                food.setProtein((float) collegeData.getDouble("protein"));
+                food.setType(collegeData.getString("type"));
+                food.setCatagorie(collegeData.getInt("category"));
+                foods.add(food);
+
+            }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if(foods!=null)
+            createList();
+
+        }
+
+    }
+    public void createList(){
+
+        //foods = dbHelper.getAllFoods(Integer.parseInt(index));
+        MyListAdapter myListAdapter = new MyListAdapter(foodList.this, foods);
+        customListView.setAdapter(myListAdapter);
+
+
+        customListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                initiatePopupWindow(position, view);
+
+            }
+        });
+
     }
 }
