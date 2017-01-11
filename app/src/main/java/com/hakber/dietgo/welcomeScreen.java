@@ -216,13 +216,40 @@ public float infoFunction(int pos){
                         if(Integer.parseInt(output.toString().trim())>0){
                             SharedPreferences preferences = getSharedPreferences("userInfos", 0);
                             SharedPreferences.Editor editor = preferences.edit();
+
                             editor.putInt("user_id", Integer.parseInt(output.toString().trim()));
+                            editor.putBoolean("first_time", true);
                             editor.commit();
+
                             successfullLogin();
                         }
                         else{
-                            Snackbar.make(view, "Beklenmedik Hata", Snackbar.LENGTH_LONG)
-                              .setAction("Action", null).show();
+                            if(Integer.parseInt(output.toString().trim())==-1){
+                                Snackbar.make(view, "Sifreniz en az 6 haneli  en çok 12 haneli olmali", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+
+                            }
+
+                            else if(Integer.parseInt(output.toString().trim())==-2){
+                                Snackbar.make(view, "Kullanici adinizi en az 4 haneli en çok 12 haneli olmalı", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+                            else if(Integer.parseInt(output.toString().trim())==-3){
+                                Snackbar.make(view, "Dogum yiliniz 1940 ile 2015 arasinda olmali", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+                            else if(Integer.parseInt(output.toString().trim())==-4){
+                                    Snackbar.make(view, "Formu gözden geçiriniz. ", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+                            else if(Integer.parseInt(output.toString().trim())==-5){
+                                Snackbar.make(view, "Kullanıcı adı mevcut.  ", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+                            else {
+                                Snackbar.make(view, "Beklenmedik Hata", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
                         }
                     }
 

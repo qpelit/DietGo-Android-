@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hakber.dietgo.Activities"
+    tools:showIn="@layout/activity_activities">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aktivite Süresi (dk):"
+        android:padding="5dp"
+        android:textSize="17sp">
+    </TextView>
+    <EditText
+        android:id="@+id/activityTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+    <Spinner
+        android:id="@+id/spinnerActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:spinnerMode="dropdown"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="5dp"
+        android:alpha="0.5"
+        android:visibility="visible" />
+    <Button
+        android:id="@+id/activityAddButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Hesapla"
+        android:layout_gravity="center_horizontal"
+        android:background="#2ecc71"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        style="@style/AppTheme"
+        android:layout_marginTop="11sp" />
+
+    <TextView
+        android:id="@+id/alertText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/textViewCalorieResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:padding="5dp"
+        android:textSize="17sp"/>
+
+    <requestFocus />
+</LinearLayout>

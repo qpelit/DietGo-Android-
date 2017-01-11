@@ -26,12 +26,15 @@ public class weightAdd extends AppCompatActivity {
     Calendar myCalendar;
     String currentDate;
     int user_id;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_add);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         SharedPreferences preferences= getSharedPreferences("userInfos", 0);
+        editor= preferences.edit();
         user_id = preferences.getInt("user_id", -1);
         setSupportActionBar(toolbar);
         addWeightButton=(Button) findViewById(R.id.weightAddButton);
@@ -49,7 +52,8 @@ public class weightAdd extends AppCompatActivity {
 
                     DBHandler.insertWeight(weight,user_id,currentDate);
 
-
+                    editor.putFloat("weight", weight);
+                    editor.commit();
                     Intent i = new Intent(weightAdd.this, weight.class);
                     startActivity(i);
                 }

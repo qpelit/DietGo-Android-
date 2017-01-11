@@ -5,9 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_food_list">foodList</string>
-    <string name="title_activity_calorie_summary">calorieSummary</string>
-    <string name="title_activity_list2">List2</string>
+    <string name="title_activity_food_list">Besin Listesi</string>
+    <string name="title_activity_calorie_summary">Alınan Kaloriler</string>
+    <string name="title_activity_list2">Besin Listesi</string>
     <string name="karbonhidrat">Karbonhidrat</string>
     <string name="protein">Protein</string>
     <string name="yag">Yağ</string>
@@ -21,9 +21,11 @@
         <item>Atıştırma</item>
 
     </string-array>
-    <string name="title_activity_weight">weight</string>
-    <string name="title_activity_weight_add">weightAdd</string>
-    <string name="title_activity_register">register</string>
-    <string name="title_activity_insert_food">insertFood</string>
-    <string name="title_activity_insert_custom_food">insertCustomFood</string>
+    <string name="title_activity_weight">Kilo</string>
+    <string name="title_activity_weight_add">Kilo Ekle</string>
+    <string name="title_activity_register">Üye Ol</string>
+    <string name="title_activity_insert_food">Besin Ekle</string>
+    <string name="title_activity_insert_custom_food">Besin Ekle</string>
+    <string name="title_activity_restoranbul">Restoran Bul</string>
+    <string name="title_activity_activities">Aktivite Kalori Hesaplama</string>
 </resources>

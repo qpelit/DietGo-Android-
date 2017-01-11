@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     TextView burnedCalorieText;
     TextView gainedCalorie;
     TextView weightText;
+    TextView activityText;
     Calendar myCalendar;
     int user_id;
     int currentYear;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
         myCalendar= Calendar.getInstance();
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                 .get(Calendar.YEAR)));
         currentYear= myCalendar.get(Calendar.YEAR);
          breakFastCalorie=(TextView) findViewById(R.id.breakFastCalorie) ;
@@ -95,13 +96,14 @@ public class MainActivity extends AppCompatActivity
          snackCalorie=(TextView) findViewById(R.id.snackCalorie) ;
          snackSuggestedCalorie=(TextView) findViewById(R.id.snackSuggestedCalorie) ;
          gainedCalorie = (TextView) findViewById(R.id.gainedCalorie);
+        activityText = (TextView) findViewById(R.id.activityText);
 
         gainedCalorie.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this, calorieSummary.class);
+                Intent i = new Intent(MainActivity.this, calorieSummary.class); //calorieSummary
                 startActivity(i);
             }
         });
@@ -118,8 +120,21 @@ public class MainActivity extends AppCompatActivity
 
 
         });
+        activityText.setOnClickListener(new View.OnClickListener(){
+
+            public  void onClick(View v){
+
+                Intent i=new Intent(MainActivity.this,Activities.class);
+                startActivity(i);
+            }
 
 
+
+
+        });
+        SharedPreferences preferences= getSharedPreferences("userInfos", 0);
+
+        weightText.setText("Kilo: "+String.valueOf(preferences.getFloat("weight", -1))+" kg");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -181,8 +196,13 @@ public class MainActivity extends AppCompatActivity
             SharedPreferences.Editor editor = preferences.edit();
 
             editor.putBoolean("isLogged", false);
+            editor.putBoolean("first_time", true);
             editor.commit();
             startActivity(welcomeIntent);
+        }
+        else if (id== R.id.healthyRestaurant){
+            Intent i = new Intent(MainActivity.this, Restoranbul.class); //calorieSummary
+            startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -352,6 +372,7 @@ public class MainActivity extends AppCompatActivity
             editor.putBoolean("first_time", false);
             editor.commit();
 
+            setSideNavBar();
 
         } catch (JSONException e) {
             e.printStackTrace();

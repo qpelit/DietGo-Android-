@@ -53,6 +53,7 @@ public class welcome_screen2 extends AppCompatActivity {
 
             }
         });
+
     }
     private void userLogin() {
 
@@ -65,6 +66,7 @@ public class welcome_screen2 extends AppCompatActivity {
                                 SharedPreferences preferences = getSharedPreferences("userInfos", 0);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putInt("user_id", Integer.parseInt(output.toString().trim()));
+                                editor.putBoolean("first_time", true);
                                 editor.commit();
                                 successfullLogin();
                             }

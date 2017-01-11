@@ -61,16 +61,6 @@ public class insertFood extends AppCompatActivity {
         spinnerType.setAdapter(dataAdapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         findViewById(R.id.btn_food_insert).setOnClickListener(new View.OnClickListener() {
             @Override

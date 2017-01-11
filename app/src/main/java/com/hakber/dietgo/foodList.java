@@ -141,7 +141,7 @@ int user_id;
 
             myCalendar= Calendar.getInstance();
             selectedDate= (TextView) pwindo.getContentView().findViewById(R.id.listDate);
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                     .get(Calendar.YEAR)));
             if(!isFinishing()) {
                 addItemsOnSpinner2(porsionOrGram);
@@ -248,11 +248,11 @@ int user_id;
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            Toast.makeText(foodList.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+            Toast.makeText(foodList.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                     .get(Calendar.YEAR), Toast.LENGTH_LONG).show();
 
 
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                     .get(Calendar.YEAR)));
 
 
@@ -261,7 +261,7 @@ int user_id;
     };
     public void showTimePickerDialog(View v) {
         new DatePickerDialog(foodList.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH)+1,
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 

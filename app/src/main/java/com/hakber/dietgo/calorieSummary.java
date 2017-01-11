@@ -49,7 +49,7 @@ public class calorieSummary extends AppCompatActivity {
         totalCal= (TextView) findViewById(R.id.totalCalorie);
         myCalendar= Calendar.getInstance();
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                 .get(Calendar.YEAR)));
         foodList=(ListView) findViewById(R.id.listView1);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -142,7 +142,7 @@ public class calorieSummary extends AppCompatActivity {
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
 
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
                     .get(Calendar.YEAR)));
             getData(); // refresh the dates according to new selected date
 

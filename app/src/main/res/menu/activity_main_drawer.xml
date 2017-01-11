@@ -6,6 +6,10 @@
             android:id="@+id/log_out_text"
             android:icon="@mipmap/ic_log_out"
             android:title="Cıkıs" />
+        <item
+            android:id="@+id/healthyRestaurant"
+            android:icon="@mipmap/foodmapicon"
+            android:title="Saglıklı Yemek Haritası" />
 
 
     </group>
