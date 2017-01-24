@@ -279,7 +279,8 @@
 
 
                     <TextView
-                        android:text="0 km yüründü >"
+                        android:text="Yürüme  >"
+                        android:id="@+id/walkedText"
                         android:layout_column="0"
                         android:textStyle="bold"
                         android:textColor="#FFF"
@@ -310,7 +311,7 @@
             <TextView
                 android:id="@+id/activityText"
 
-                android:text="0 kcal verildi >"
+                android:text="Aktiviteler >"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="@color/background_floating_material_light"

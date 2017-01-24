@@ -62,6 +62,8 @@ public class foodList extends AppCompatActivity {
     List<Food> foods = new ArrayList<Food>();
 int user_id;
    String index;
+    int indexint;
+    String sdate;
     private ProgressBar spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,8 +142,10 @@ int user_id;
             porsionOrGram=String.valueOf(foods.get(pos).getType());
 
             myCalendar= Calendar.getInstance();
+            sdate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR));
             selectedDate= (TextView) pwindo.getContentView().findViewById(R.id.listDate);
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                     .get(Calendar.YEAR)));
             if(!isFinishing()) {
                 addItemsOnSpinner2(porsionOrGram);
@@ -195,7 +199,7 @@ int user_id;
             @Override
             public void onClick(View v) {
 
-                DBHandler.insertFoodList(foods.get(foodpos).getId(), foods.get(foodpos).getFoodName(),foods.get(foodpos).getCalorie(),spinner2position, spinner1position, user_id, (String) selectedDate.getText());
+                DBHandler.insertFoodList(foods.get(foodpos).getId(), foods.get(foodpos).getFoodName(),foods.get(foodpos).getCalorie(),spinner2position, spinner1position, user_id, (String) sdate);
                 Intent i = new Intent(foodList.this, calorieSummary.class);
                 startActivity(i);
             }
@@ -248,11 +252,12 @@ int user_id;
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            Toast.makeText(foodList.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+            Toast.makeText(foodList.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                     .get(Calendar.YEAR), Toast.LENGTH_LONG).show();
+            sdate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR));
 
-
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                     .get(Calendar.YEAR)));
 
 
@@ -261,7 +266,7 @@ int user_id;
     };
     public void showTimePickerDialog(View v) {
         new DatePickerDialog(foodList.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH)+1,
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
@@ -269,7 +274,7 @@ int user_id;
         String url=" ";
         spinner.setVisibility(View.VISIBLE);
         if(cat!=-1) { // if category is not the user's custom food list
-            url = Config.FOOD_DATA_URL + index;
+            url = Config.FOOD_DATA_URL + String.valueOf(cat);
         }
         else{
             url = Config.FOOD_DATA_URL + String.valueOf(user_id)+"0"; //  category will be user_id+0

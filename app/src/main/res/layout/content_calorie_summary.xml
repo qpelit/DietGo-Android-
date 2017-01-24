@@ -34,7 +34,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/advisedCalorie"
                 android:layout_column="1"
                 android:text="Önerilen"
                 android:gravity="center"

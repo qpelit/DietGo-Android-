@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     TextView burnedCalorieText;
     TextView gainedCalorie;
     TextView weightText;
+    String sDate;
     TextView activityText;
     Calendar myCalendar;
     int user_id;
@@ -83,8 +84,10 @@ public class MainActivity extends AppCompatActivity
 
 
         myCalendar= Calendar.getInstance();
+        sDate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                .get(Calendar.YEAR));
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                 .get(Calendar.YEAR)));
         currentYear= myCalendar.get(Calendar.YEAR);
          breakFastCalorie=(TextView) findViewById(R.id.breakFastCalorie) ;
@@ -104,6 +107,15 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 Intent i = new Intent(MainActivity.this, calorieSummary.class); //calorieSummary
+                startActivity(i);
+            }
+        });
+        findViewById(R.id.walkedText).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, walkActivity.class); //calorieSummary
                 startActivity(i);
             }
         });
@@ -223,8 +235,9 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this, myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
                     .get(Calendar.YEAR), Toast.LENGTH_LONG).show();
 
-
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+            sDate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR));
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                     .get(Calendar.YEAR)));
             getData();
         }
@@ -234,7 +247,7 @@ public class MainActivity extends AppCompatActivity
     private void getData() {
 
 
-        String url = Config.DATA_URL+user_id+"&date="+selectedDate.getText();
+        String url = Config.DATA_URL+user_id+"&date="+sDate;
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

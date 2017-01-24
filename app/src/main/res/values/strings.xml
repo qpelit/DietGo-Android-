@@ -28,4 +28,22 @@
     <string name="title_activity_insert_custom_food">Besin Ekle</string>
     <string name="title_activity_restoranbul">Restoran Bul</string>
     <string name="title_activity_activities">Aktivite Kalori Hesaplama</string>
+    <string name="title_activity_walk">Yürüme Mesafesi</string>
+    <string name="latitude_label">Latitude</string>
+    <string name="longitude_label">Longitude</string>
+
+    <string name="distance_label">Mesafe</string>
+    <string name="duration_label">Süre</string>
+    <string name="average_speed_label">Ort. Hız</string>
+
+    <string name="distance_text">0.0</string>
+    <string name="duration_text">0.0</string>
+    <string name="average_speed_text">0.0</string>
+
+
+    <string name="last_update_time_label">Last location update time</string>
+
+    <string name="start_updates">Aktivite Başlat</string>
+    <string name="stop_updates">Aktivite Durdur</string>
+    <string name="location_updated_message">Location updated</string>
 </resources>

@@ -56,7 +56,8 @@ public class Restoranbul extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
         mMap.setMyLocationEnabled(true);
-
+        LatLng loc = new LatLng(41.031483, 28.976315);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
 
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.043476, 29.004596)).title("Balkan Lokantası"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.992014, 28.715094)).title("Tavuk Dünyası"));
@@ -106,7 +107,6 @@ public class Restoranbul extends FragmentActivity implements OnMapReadyCallback 
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.012553, 28.703923)).title("Lord's Pub"));
 
 
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
     }
    /* public void setMap(){
         // Add a marker in Sydney and move the camera

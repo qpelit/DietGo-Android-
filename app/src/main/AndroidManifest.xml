@@ -31,7 +31,7 @@
         </activity>
 
         <service
-            android:name=".testService"
+            android:name=".walkActivityService"
             android:exported="false" />
 
         <activity
@@ -125,6 +125,15 @@
         <activity
             android:name=".Activities"
             android:label="@string/title_activity_activities"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hakber.dietgo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".walkActivity"
+            android:label="@string/title_activity_walk"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
             <meta-data

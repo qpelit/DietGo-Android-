@@ -37,6 +37,7 @@ public class calorieSummary extends AppCompatActivity {
     private TextView totalCal;
     Calendar myCalendar;
     TextView selectedDate;
+    String sdate;
     int user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,10 @@ public class calorieSummary extends AppCompatActivity {
         totalCal= (TextView) findViewById(R.id.totalCalorie);
         myCalendar= Calendar.getInstance();
         selectedDate= (TextView) findViewById(R.id.selectedDate);
-        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+        ((TextView) findViewById(R.id.advisedCalorie)).setText("1600 kcal");
+        sdate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                .get(Calendar.YEAR));
+        selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                 .get(Calendar.YEAR)));
         foodList=(ListView) findViewById(R.id.listView1);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -72,7 +76,7 @@ public class calorieSummary extends AppCompatActivity {
         // }
         //loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
-        String url = Config.DATA_URL+user_id+"&date="+selectedDate.getText();
+        String url = Config.DATA_URL+user_id+"&date="+sdate;
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -141,8 +145,9 @@ public class calorieSummary extends AppCompatActivity {
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-
-            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH)+1 + "/" + myCalendar
+            sdate=String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + myCalendar.get(Calendar.MONTH) + "/" + myCalendar
+                    .get(Calendar.YEAR));
+            selectedDate.setText(String.valueOf(myCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (myCalendar.get(Calendar.MONTH)+1) + "/" + myCalendar
                     .get(Calendar.YEAR)));
             getData(); // refresh the dates according to new selected date
 

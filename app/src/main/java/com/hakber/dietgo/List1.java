@@ -19,8 +19,7 @@ public class List1 extends AppCompatActivity {
     private String[] categories =
             {"Kendi Eklediklerim","Atıştırmalar", "Fast Food", "Balık & Deniz Ürünleri", "Çorbalar","Ekmek & Kahvaltı Tahılları",
                     "Et", "Fasülye ve Baklagiller", "İçecekler", "Kuru Yemişler & Tohum Ürünleri", "Makarna & Pirinç", "Meyve",
-                    "Salata Çeşitleri", "Sebzeler", "Sos, Baharat & Ezme Çeşitleri", "Süt Ürünleri", "Tatlı & Şekerleme Çeşitleri",
-                    "Yumurtalar", "Diğer"};
+                    "Salata Çeşitleri","Diğer"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
